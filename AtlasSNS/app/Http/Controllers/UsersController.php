@@ -82,6 +82,10 @@ class UsersController extends Controller
 
         unset($user_form['_token']);
 
+        if(isset($user_form['password'])){
+            $user_form['password']=bcrypt('password');
+        }
+
         $user->fill($user_form)->save();
 
         return redirect('/top');
