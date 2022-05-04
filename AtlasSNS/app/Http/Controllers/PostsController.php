@@ -68,6 +68,7 @@ class PostsController extends Controller
             ]);
 
         $id = $request->input('id');
+        dd($id);
         $up_post = $request->input('upPost');
         Post::query()
         ->where('id', $id)

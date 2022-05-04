@@ -31,7 +31,7 @@
                         <form action="{{ route('updatePost', ['id' => $list->id ]) }}" method="post">
                             <div class="modal-body">
                                 <input id="id" class="form-control" type="hidden" name="id" value="$list->id">
-                                <textarea class="post_edit" name="upPost" maxlength="150" placeholder="{{$list->post}}"></textarea>
+                                <textarea class="post_edit" name="upPost" maxlength="150">{{$list->post}}</textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn" data-dismiss="modal"><img src="images/edit.png" style="width:35px; height:35px;"></button>

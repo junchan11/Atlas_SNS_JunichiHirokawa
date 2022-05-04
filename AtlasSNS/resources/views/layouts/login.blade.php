@@ -23,24 +23,26 @@
 <body>
     <header>
         <div class="header_inner">
-            <div class="header_item">
+            <div class="header_list">
+                <div class="header_item">
                     <a href="/top"><img src="images/atlas.png" class="header_item_img"></a>
-            </div>
-            <div class="header_nav_user">
+                </div>
+                <div class="header_nav_user">
                     {{Auth::user()->username}}&nbsp;さん
-            </div>
-            <ul class="menu">
-                <li>
-                     <span style="display: inline-block; transform: rotate(90deg);">></span>
-                    <ul class="menuSub">
-                        <li><a href="/top" class="ac_item_link home">HOME</a></li>
-                        <li class="profile"><a href="/profile" class="ac_item_link profile">プロフィール編集</a></li>
-                        <li><a href="/logout" class="ac_item_link logout">ログアウト</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="header_nav_item">
+                </div>
+                <ul class="menu">
+                    <li>
+                        <span class="arrow">></span>
+                        <ul class="menuSub">
+                            <li><a href="/top" class="ac_item_link home">HOME</a></li>
+                            <li class="profile"><a href="/profile" class="ac_item_link profile">プロフィール編集</a></li>
+                            <li><a href="/logout" class="ac_item_link logout">ログアウト</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="header_nav_item">
                         <img src="{{ asset('storage/' . Auth::user()->images) }}" >
+                </div>
             </div>
         </div>
     </header>
@@ -77,13 +79,12 @@
 
     <script>
         $(function() {
-            $("ul.menu li").hover(
+            $("ul.menu li").on('click',
             function() {
-                $(".menuSub:not(:animated)", this).slideDown();
-            },
-            function() {
-            $(".menuSub", this).slideUp();
+                $(".menuSub:not(:animated)", this).slideToggle();
+                $('.arrow').toggleClass("open");
             }
+
             );
         });
     </script>

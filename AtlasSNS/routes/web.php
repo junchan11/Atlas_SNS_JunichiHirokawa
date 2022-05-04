@@ -29,6 +29,9 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
+Route::group(['middleware' => ['auth']], function () {
+    //
+
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
@@ -53,4 +56,6 @@ Route::get('/show','FollowsController@show');
 
 Route::post('/profile_edit','UsersController@updateProfile');
 
-Route::post('/post_edit','PostController@updatePost')->name('updatePost');
+Route::post('/post-edit','PostController@updatePost')->name('updatePost');
+
+});
