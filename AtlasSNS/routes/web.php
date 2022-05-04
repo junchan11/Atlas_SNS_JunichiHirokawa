@@ -52,3 +52,5 @@ Route::post('/unfollow','UsersController@delete');
 Route::get('/show','FollowsController@show');
 
 Route::post('/profile_edit','UsersController@updateProfile');
+
+Route::post('/post_edit','PostController@updatePost')->name('updatePost');

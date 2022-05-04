@@ -5,6 +5,11 @@
 {!! Form::open(['url' => '/register']) !!}
 
 <h2>新規ユーザー登録</h2>
+@if ($errors->has('password'))
+                <span class=“help-block”>
+                  <strong>{{ $errors->first('password') }}</strong>
+                </span>
+@endif
 
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
@@ -16,7 +21,7 @@
 {{ Form::text('password',null,['class' => 'input']) }}
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
+{{ Form::text('password_confirmation',null,['class' => 'input']) }}
 
 {{ Form::submit('登録') }}
 

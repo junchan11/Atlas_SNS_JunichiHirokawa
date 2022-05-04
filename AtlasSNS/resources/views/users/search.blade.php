@@ -5,8 +5,9 @@
 {!! Form::open(['url' => 'post/search']) !!}
         <div class="form-group">
             {!! Form::input('text', 'search', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
+            <button type="submit" class="btn pull-right"><img src="images/search.png" style="width:35px; height:20px;">
+        </button>
         </div>
-        <button type="submit" class="btn btn-success pull-right">検索
         </button>
         {!! Form::close() !!}
         @if (!empty($keyword))

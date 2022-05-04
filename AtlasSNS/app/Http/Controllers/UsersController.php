@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\Follow;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+
 
 class UsersController extends Controller
 
@@ -77,17 +80,34 @@ class UsersController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $user_form = $request->all();
+
         $user = Auth::user();
 
-        unset($user_form['_token']);
+        $validateDate = $request->validate([
+            'username' => 'required|string|min:2|max:12',
+            'mail' => ['required|string|email|min:5|max:40',Rule::unique('users')->ignore($user->id)],
+            'password' => 'required|string|min:8|max:20|confirmed',
+            'password_confirmation' => 'required|string|min:8|max:20',
+            'bio' => 'max:150',
+            'img' => 'image'
+            ]);
 
-        if(isset($user_form['password'])){
-            $user_form['password']=bcrypt('password');
+        $user->update([
+            'username' => $request->input('username'),
+            'email' => $request->input('mail'),
+            'password' => bcrypt($request->input('password')),
+            'bio' => $request->input('bio'),
+        ]);
+
+        if($request->hasFile('image')){
+            $image = $request->file('image')->store('public');
+            $user->images = basename($image);
+
+            $user->update();
         }
 
-        $user->fill($user_form)->save();
-
         return redirect('/top');
+
     }
+
 }

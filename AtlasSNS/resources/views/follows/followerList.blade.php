@@ -3,8 +3,8 @@
 @section('content')
 <h5>Follower List</h5>
 @foreach($posts as $post)
-<p>名前：{{ $post->user->username }}</p><br />
-<p>投稿内容：{{ $post->post }}</p><br />
+<p><img src=<img src="{{ asset('storage/' . $list->user->images) }}" >{{ $post->user->username }}</p><br />
+<p>{{ $post->post }}</p><br />
 @endforeach
 
 

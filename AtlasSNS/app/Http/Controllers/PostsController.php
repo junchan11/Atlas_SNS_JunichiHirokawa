@@ -38,7 +38,7 @@ class PostsController extends Controller
             ->where('id', $id)
             ->delete();
 
-        return redirect('index');
+        return redirect('/top');
     }
 
     public function show()//カリキュラム参照　簡易SNS開発②
@@ -61,7 +61,23 @@ class PostsController extends Controller
         return view('follows.followerList', compact('posts'));
     }
 
+    public function updatePost(Request $request){
 
+        $validateDate = $request->validate([
+            'upPost' => 'max:150'
+            ]);
+
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        Post::query()
+        ->where('id', $id)
+        ->update(
+        ['post' => $up_post]
+        );
+
+        return redirect('/top');
+
+    }
 
 
     }

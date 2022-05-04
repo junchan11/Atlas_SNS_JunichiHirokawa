@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <!--スマホ,タブレット対応-->
@@ -21,44 +22,72 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="">
-                <div id="user_id">
-                    <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
-                </div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+        <div class="header_inner">
+            <div class="header_item">
+                    <a href="/top"><img src="images/atlas.png" class="header_item_img"></a>
+            </div>
+            <div class="header_nav_user">
+                    {{Auth::user()->username}}&nbsp;さん
+            </div>
+            <ul class="menu">
+                <li>
+                     <span style="display: inline-block; transform: rotate(90deg);">></span>
+                    <ul class="menuSub">
+                        <li><a href="/top" class="ac_item_link home">HOME</a></li>
+                        <li class="profile"><a href="/profile" class="ac_item_link profile">プロフィール編集</a></li>
+                        <li><a href="/logout" class="ac_item_link logout">ログアウト</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="header_nav_item">
+                        <img src="{{ asset('storage/' . Auth::user()->images) }}" >
             </div>
         </div>
     </header>
+
+
+
+
+
     <div id="row">
         <div id="container">
             @yield('content')
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{ Auth::user()->username }}さんの</p>
+                <p>{{ Auth::user()->username }}さんの</p></br>
                 <div>
-                <p>フォロー数</p>
-                <p>{{ Auth::user()->getFollowCount(Auth::id()) }}名</p><!--User.PHP内のgetFollowCountメソッドを使っている。(Auth::id())はログインしている人のidをgetFollowCount内の$user_idに送っている。-->
+                <p>フォロー数    {{ Auth::user()->getFollowCount(Auth::id()) }}名</p><!--User.PHP内のgetFollowCountメソッドを使っている。(Auth::id())はログインしている人のidをgetFollowCount内の$user_idに送っている。-->
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
+                <p align="right"><a href="/follow-list" class="button_follow">フォローリスト</a></p>
                 <div>
-                <p>フォロワー数</p>
-                <p>{{ Auth::user()->getFollowerCount(Auth::id()) }}名</p>
+                <p>フォロワー数{{ Auth::user()->getFollowerCount(Auth::id()) }}名</p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
-            </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+                <P align="right"><a href="/follow-list" class="button_follower">フォロワーリスト</a></P>
+            </div></br>
+            <p align="center"><a href="/search" class="button_searchUser">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(function() {
+            $("ul.menu li").hover(
+            function() {
+                $(".menuSub:not(:animated)", this).slideDown();
+            },
+            function() {
+            $(".menuSub", this).slideUp();
+            }
+            );
+        });
+    </script>
+
+
 </body>
 </html>

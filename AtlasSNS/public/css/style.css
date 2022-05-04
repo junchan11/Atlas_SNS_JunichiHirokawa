@@ -1,22 +1,159 @@
 @charset "utf-8";
-html{
-}
-body{
-}
+
+html {}
+
+body {}
+
+
+
 /* header */
-header{
-    background:#186AC9;
+header {
+    background: #186AC9;
+    color: #ffffff;
 }
 
+.menu {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    color: #fff;
+    padding: 0;
+}
+
+.menu li {
+    position: relative;
+    width: 100px;
+    margin-left: 1px;
+    padding: 5px;
+    background: #444444;
+}
+
+.menuSub {
+    position: absolute;
+    margin-left: -6px;
+    padding: 0;
+    display: none;
+}
+
+.menuSub li a {
+    padding: 5px;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: -5px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menuSub li a:hover {
+    background: #FFCA7B;
+}
+
+
+
 /* main content */
-#row{
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+.form-group {
+    display: flex;
+    height: 200px;
+}
+
+.form-group img {
+    height: 100px;
+}
+
+.button_follow {
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 9pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 9px 15px;
+    background: #186ac9;
+    color: #ffffff;
+    line-height: 1em;
+    transition: .3s;
+    border: 2px solid #186ac9;
+}
+
+.button_follower {
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 9pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 9px 15px;
+    background: #186ac9;
+    color: #ffffff;
+    line-height: 1em;
+    transition: .3s;
+    border: 2px solid #186ac9;
+}
+
+.button_searchUser {
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 11pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 9px 20px;
+    background: #186ac9;
+    color: #ffffff;
+    line-height: 1em;
+    transition: .3s;
+    border: 2px solid #186ac9;
+}
+
+.up_button {
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 13pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 60px;
+    background: #FF0066;
+    color: #ffffff;
+    line-height: 1em;
+    border: none;
+}
+
+.button_follow:hover {
+    color: #186ac9;
+    background: #ffffff;
+    text-decoration: none;
+}
+
+.button_follower:hover {
+    color: #186ac9;
+    background: #ffffff;
+    text-decoration: none;
+}
+
+.button_searchUser:hover {
+    color: #186ac9;
+    background: #ffffff;
+    text-decoration: none;
+}
+
+
+
+textarea {
+    width: 100%;
+    height: 120px;
+    resize: none;
+    border: none;
+    outline: none
 }

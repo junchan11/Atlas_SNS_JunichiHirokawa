@@ -75,8 +75,15 @@ class RegisterController extends Controller
     //     return view("auth.register");
     // }
 
-    public function register(Request $request){
+
+public function register(Request $request){
         if($request->isMethod('post')){
+            $validateDate = $request->validate([
+            'username' => 'required|string|min:2|max:12',
+            'mail' => 'required|string|email|min:5|max:40|unique:users',
+            'password' => 'required|string|min:8|max:20|confirmed',
+            'password_confirmation' => 'required|string|min:8|max:20',
+            ]);
             $data = $request->input();
             $username = $data['username'];
             $this->create($data);
