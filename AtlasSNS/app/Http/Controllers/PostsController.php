@@ -41,10 +41,28 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
+
+    public function updatePost(Request $request){
+
+        $validateDate = $request->validate([
+            'upPost' => 'max:150'
+            ]);
+
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        Post::query()
+        ->where('id', $id)
+        ->update(
+        ['post' => $up_post]
+        );
+
+        return redirect('/top');
+
+    }
+
     public function show()//カリキュラム参照　簡易SNS開発②
     {
         $following_id = Auth::user()->follows()->pluck('followed_id');
-
 
         $posts = Post::with('user')->whereIn('user_id',$following_id)->latest()->get();//whereIn('user_id',$following_id)は指定したカラムの中に値が含まれているか。（'カラム名',値）　get()そのまま抽出
 
@@ -59,25 +77,6 @@ class PostsController extends Controller
 
 
         return view('follows.followerList', compact('posts'));
-    }
-
-    public function updatePost(Request $request){
-
-        $validateDate = $request->validate([
-            'upPost' => 'max:150'
-            ]);
-
-        $id = $request->input('id');
-        dd($id);
-        $up_post = $request->input('upPost');
-        Post::query()
-        ->where('id', $id)
-        ->update(
-        ['post' => $up_post]
-        );
-
-        return redirect('/top');
-
     }
 
 

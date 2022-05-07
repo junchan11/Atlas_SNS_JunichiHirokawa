@@ -2,9 +2,15 @@
 
 @section('content')
 <h5>Follower List</h5>
+
 @foreach($posts as $post)
-<p><img src=<img src="{{ asset('storage/' . $list->user->images) }}" >{{ $post->user->username }}</p><br />
-<p>{{ $post->post }}</p><br />
+<div class ="followerPost">
+        <ul>
+            <li><img src="{{ asset('storage/' . $post->user->images) }}" >
+            <li>{{ $post->user->username }}</li>
+            <li>{{ $post->post }} {{$post->created_at}}</li>
+        </ul>
+    </div>
 @endforeach
 
 

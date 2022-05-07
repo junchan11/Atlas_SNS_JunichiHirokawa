@@ -16,8 +16,8 @@
 
 <ul class="list-unstyled">
   @foreach ($search as $user)
-    <li>{{ $user -> username }}
-@if (auth()->user()->isFollowing($user->id))
+    <li><img src="{{ asset('storage/' . $user->images) }}" >{{ $user -> username }}
+        @if (auth()->user()->isFollowing($user->id))
                                 <div class="px-2">
                                     {!! Form::open(['url' => '/unfollow']) !!}
                                         {!!Form::button('フォロー解除', ['type' => 'submit', 'class' => 'btn btn-primary'])!!}
@@ -33,7 +33,7 @@
                                 </div><br />
                             @endif
     </li>
-  @endforeach
+        @endforeach
 </ul>
 
 

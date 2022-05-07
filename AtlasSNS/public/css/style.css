@@ -164,3 +164,8 @@ textarea {
     border: none;
     outline: none
 }
+
+.followImg {
+    display: flex;
+    flex-wrap: wrap;
+}
