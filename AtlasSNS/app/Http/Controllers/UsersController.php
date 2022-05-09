@@ -85,17 +85,17 @@ class UsersController extends Controller
 
         $validateDate = $request->validate([
             'username' => 'required|string|min:2|max:12',
-            'mail' => ['required|string|email|min:5|max:40',Rule::unique('users')->ignore($user->id)],
+            'mail' => 'required|string|email|min:5|max:40|unique:users,mail,'.$request->id.',id',//unique:ユニークチェックをしたいテーブル名,ユニークチェックをしたいカラム名,ユニークチェックを除外したい値,ユニークチェックを除外したいカラム名
             'password' => 'required|string|min:8|max:20|confirmed',
             'password_confirmation' => 'required|string|min:8|max:20',
             'bio' => 'max:150',
             'img' => 'image'
-            ]);
+        ]);
 
 
         $user->update([
             'username' => $request->input('username'),
-            'email' => $request->input('mail'),
+            'mail' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
             'bio' => $request->input('bio'),
         ]);
