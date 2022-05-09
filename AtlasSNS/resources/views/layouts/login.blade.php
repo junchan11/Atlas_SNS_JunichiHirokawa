@@ -25,7 +25,7 @@
         <div class="header_inner">
             <div class="header_list">
                 <div class="header_item">
-                    <a href="/top"><img src="images/atlas.png" class="header_item_img"></a>
+                    <a href="/top"><img src="{{asset('images/atlas.png' )}}" class="header_item_img"></a>
                 </div>
                 <div class="header_nav_user">
                     {{Auth::user()->username}}&nbsp;さん

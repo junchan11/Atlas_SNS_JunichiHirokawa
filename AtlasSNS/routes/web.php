@@ -56,4 +56,6 @@ Route::post('/profile_edit','UsersController@updateProfile');
 
 Route::post('/post-edit','PostsController@updatePost')->name('updatePost');
 
+Route::get('/post/show/{id}','FollowsController@show')->name('postShow');
+
 });

@@ -3,6 +3,10 @@
 @section('content')
 <h5>Follow List</h5>
 
+@foreach($users as $user)
+        <a href="{{route('postShow',['id' => $user->id ])}}"><img src="{{ asset('storage/' . $user->images) }}" ></a>
+@endforeach
+
 @foreach($posts as $post)
     <div class ="followPost">
         <ul>

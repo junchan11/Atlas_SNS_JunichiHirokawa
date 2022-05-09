@@ -92,12 +92,15 @@ class UsersController extends Controller
             'img' => 'image'
             ]);
 
+
         $user->update([
             'username' => $request->input('username'),
             'email' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
             'bio' => $request->input('bio'),
         ]);
+        $bio = $request->input('bio');
+        // dd($bio);
 
         if($request->hasFile('image')){
             $image = $request->file('image')->store('public');

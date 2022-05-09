@@ -75,11 +75,26 @@ header {
 
 .form-group {
     display: flex;
-    height: 200px;
+    height: 100px;
 }
 
 .form-group img {
     height: 100px;
+}
+
+.newPost-btn {
+    cursor: pointer;
+    background-color: #ffffff;
+    border: none;
+    height: 100px;
+    outline: none;
+}
+
+.form-control {
+    display: flex;
+    height: 100px;
+    border: none;
+    outline: none;
 }
 
 .button_follow {

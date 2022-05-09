@@ -69,6 +69,7 @@ class PostsController extends Controller
         return view('follows.followList',compact('posts'));
     }
 
+
     public function show_list()
     {
         $following_id = Auth::user()->followers()->pluck('following_id');
@@ -78,6 +79,7 @@ class PostsController extends Controller
 
         return view('follows.followerList', compact('posts'));
     }
+
 
 
     }
