@@ -10,52 +10,135 @@ body {}
 header {
     background: #186AC9;
     color: #ffffff;
+    height: 80px;
 }
 
-.menu {
+.header_list {
     display: flex;
-    justify-content: flex-start;
-    list-style-type: none;
-    color: #fff;
-    padding: 0;
+    justify-content: space-between;
+    background: #186AC9;
+    padding: 13px 25px;
 }
 
-.menu li {
+.header_nav_list {
+    display: flex;
+    margin-right: 40px;
+}
+
+.header_nav_item {
+    margin-top: 25px;
+    margin-left: 10px;
+    height: 40px;
+}
+
+.header_nav_item img {
+    height: 60px;
+    width: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.header_nav_user {
+    color: #fff;
+}
+
+.header_item_img {
+    height: 40px;
+    margin-top: 15px;
+}
+
+
+.ac>li {
+    /* margin-bottomにすると変な動きをするのでpaddingにする */
+    padding-bottom: 6px;
+    list-style: none;
+}
+
+
+.ac-label {
+    cursor: pointer;
     position: relative;
-    width: 100px;
-    margin-left: 1px;
-    padding: 5px;
-
 }
 
-.menuSub {
-    position: absolute;
-    margin-left: -6px;
-    padding: 0;
+.ac-content {
     display: none;
+    z-index: 100;
+    position: absolute;
+    /* ヘッダーの高さと同じする */
+    top: 70px;
+    right: 9.9%;
+    transform: translateX(50%);
+    border: 1px solid #186AC9;
+    margin-top: 20px;
+    width: 275px;
+    height: 238px;
 }
 
-.menuSub li a {
-    padding: 5px;
-    margin-left: -5px;
-    margin-right: -5px;
-    margin-bottom: -5px;
+.ac_content_item {
+    background: #fff;
+    font-size: 14px;
+}
+
+.ac_content_item li {
+    padding: 30px 80px;
+}
+
+.ac_item_link {
     display: block;
+    text-align: center;
+    color: #727272;
+}
+
+
+.profile {
+    background: #186AC9;
+    text-align: center;
     color: #fff;
-    text-decoration: none;
 }
 
-.arrow {
+.icon-wrap {
+    width: 20px;
+    height: 20px;
+    z-index: 100;
+}
+
+.icon {
     display: inline-block;
-    transform: rotate(90deg);
-    background: #186AC9;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
 }
 
-.open {
-    transform: translate(-10%, -10%) rotate(-90deg);
-    background: #186AC9;
+.icon:before {
+    position: absolute;
+    content: "";
+    transition: all .4s;
+    width: 8px;
+    height: 8px;
+    border: 0px;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg);
 }
 
+/* 下向き矢印クリック後、上向きに回転する */
+.icon.open:before {
+    top: 56%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* 投稿 */
+.content_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+.side_bar_item {
+    border-left: 1px solid #727272;
+}
 
 
 /* main content */
@@ -68,33 +151,148 @@ header {
     flex: 0 0 80%;
 }
 
+/* side */
+
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
 
-.form-group {
-    display: flex;
-    height: 100px;
+.side-item {
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 10px;
 }
 
-.form-group img {
+.side-item>div {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.follow-btn {
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 9pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 9px 15px;
+    background: #186ac9;
+    color: #ffffff;
+    line-height: 1em;
+    transition: .3s;
+    border: 2px solid #186ac9;
+}
+
+.unfollow-btn {
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 9pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 9px 15px;
+    background: #ff0000;
+    color: #ffffff;
+    line-height: 1em;
+    transition: .3s;
+    border: 2px solid #ff0000;
+}
+
+/* index */
+
+
+.post-block {
+    list-style: none;
+    display: flex;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.icon-index {
+    margin-left: 100px;
+    margin-top: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    resize: none;
+    border: none;
+    outline: none
+}
+
+.post-content {
+    width: 100%;
+    padding: 20px;
+    margin-left: 80px;
+
+}
+
+.post-content>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-content img {
+    width: 40px;
+    height: 40px;
+    text-align: right;
+}
+
+
+.post-name {
+    margin-bottom: 10px;
+}
+
+
+
+.form-icon img {
+    height: 40px;
+    width: 40px;
+    margin-top: 40px;
+}
+
+figure {
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.form-box {
     height: 100px;
+    display: flex;
+}
+
+.form-group {
+    border-bottom: 6px solid #DDDDDD;
+    display: flex;
+    padding-left: 50px;
+    height: 150px;
 }
 
 .newPost-btn {
     cursor: pointer;
     background-color: #ffffff;
     border: none;
-    height: 100px;
+    height: 50px;
+    width: 50px;
     outline: none;
+    margin-top: 65px;
+    margin-left: 300px;
+
+}
+
+.newPost-btn img {
+    height: 80px;
+    width: 80px;
 }
 
 .form-control {
     display: flex;
-    height: 100px;
+    height: 80px;
+    width: 500px;
     border: none;
     outline: none;
+    margin-top: 30px;
 }
 
 .button_follow {
@@ -109,6 +307,8 @@ header {
     line-height: 1em;
     transition: .3s;
     border: 2px solid #186ac9;
+    margin-top: 15px;
+    width: 128px;
 }
 
 .button_follower {
@@ -123,6 +323,7 @@ header {
     line-height: 1em;
     transition: .3s;
     border: 2px solid #186ac9;
+    margin-top: 15px;
 }
 
 .button_searchUser {
@@ -137,6 +338,7 @@ header {
     line-height: 1em;
     transition: .3s;
     border: 2px solid #186ac9;
+    margin-top: 20px;
 }
 
 .up_button {
@@ -170,17 +372,179 @@ header {
     text-decoration: none;
 }
 
-
-
-textarea {
-    width: 100%;
-    height: 120px;
-    resize: none;
-    border: none;
-    outline: none
+/* follow-List */
+.follow-block {
+    list-style: none;
+    display: flex;
+    border-bottom: 1px solid #DDDDDD;
 }
 
-.followImg {
+.follow-block img {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    margin-left: 85px;
+}
+
+.follow-content {
+    width: 100%;
+    padding: 20px;
+    margin-left: 85px;
+
+}
+
+.follow-content>div {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.follow-name {
+    margin-bottom: 10px;
+}
+
+.follow-icon {
+    margin-left: 10px;
+    margin-top: 20px;
+    height: 70px;
+}
+
+.follow-icon img {
+    height: 50px;
+    width: 50px;
+}
+
+.followList-img {
+    display: flex;
+    border-bottom: 6px solid #DDDDDD;
+    height: 150px;
+}
+
+.followList-img h1 {
+    font-size: 20px;
+    height: 20px;
+    margin-left: 70px;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+
+/* show */
+
+.show-form {
+    border-bottom: 6px solid #DDDDDD;
+}
+
+.show-block1 {
+    display: flex;
+}
+
+.show-btn {
+    display: flex;
+}
+
+.show-block1 img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.show-list {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.show-block2 {
+    list-style: none;
+    display: flex;
+}
+
+.show-block2 img {
+    width: 50px;
+    height: 50px;
+}
+
+.show-content {
+    width: 100%;
+    padding: 20px;
+
+}
+
+
+
+.show-content>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-name {
+    margin-bottom: 10px;
+}
+
+
+/* search */
+
+.search-list {
+    margin-top: 30px;
+}
+
+.search-block {
+    list-style: none;
+    display: flex;
+    margin-left: 300px;
+    margin-right: 300px;
+
+}
+
+.search-block img {
+    width: 50px;
+    height: 50px;
+}
+
+.search-content {
+    width: 100%;
+    padding: 20px;
+
+}
+
+.search-content>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-name {
+    margin-bottom: 10px;
+}
+
+.px-3 {
+    width: 230px;
+    margin-top: 20px;
+}
+
+.search-form {
+    display: flex;
+    height: 150px;
+    border-bottom: 6px solid #DDDDDD;
+}
+
+.search-btn {
+    background-color: #ffffff;
+    border: none;
+    margin-left: 10px;
+}
+
+.search-item {
+    display: flex;
+    height: 50px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.search-btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.search-text {
+    width: 300px;
+    border: 2px solid #BBBBBB;
+    border-radius: 5px;
 }

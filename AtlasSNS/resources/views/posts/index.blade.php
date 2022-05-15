@@ -2,28 +2,41 @@
 
 
 @section('content')
-<table>
+
     {!! Form::open(['url' => 'post/create']) !!}
         <div class="form-group">
-            {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
-            {!! Form::hidden('user-id', Auth::user()->id ) !!}
-            <button type="button" class="newPost-btn"><img src="images/post.png"></button>
+            <figure class="form-icon"><img src="{{ asset('storage/' . Auth::user()->images) }}" ></figure>
+            <div class="form-box">
+                {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
+                {!! Form::hidden('user-id', Auth::user()->id ) !!}
+                <button type="button" class="newPost-btn"><img src="images/post.png"></button>
+            </div>
         </div>
-{!! Form::close() !!}
-</table>
+    {!! Form::close() !!}
 
-<table>
-    <tr>
-        @foreach ($list as $list)
-            <ul>
-                <il><img src="{{ asset('storage/' . $list->user->images) }}" >{{$list->user->username}} {{ $list->post }} {{ $list->created_at }}</il>
-                @if(Auth::user()->id == $list->user_id)
-                <il><button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter{{$list->id}}"><img src="images/edit.png" style="width:35px; height:35px; "></button></il>
-                <td><a class="btn btn-sm" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を消去します。よろしいでしょうか？')"><img src="images/trash-h.png" style="width:50px; height:50px;"></a></td>
-                @endif
-            </ul>
-    </tr>
-</table>
+
+    @foreach ($list as $list)
+    <div class="post-list">
+        <ul>
+            <il class="post-block">
+                <figure ><img src="{{ asset('storage/' . $list->user->images) }}" class="icon-index"></figure>
+                <div class="post-content">
+                    <div>
+                        <div class="post-name">{{$list->user->username}}</div>
+                        <div>{{ $list->created_at }}</div>
+                    </div>
+                    <div>
+                        <div>{{ $list->post }}</div>
+                        <div>
+                        @if(Auth::user()->id == $list->user_id)
+                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter{{$list->id}}"><img src="images/edit.png"></button><a class="btn" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を消去します。よろしいでしょうか？')"><img src="images/trash.png"></a>
+                        @endif
+                    </div>
+                </div>
+            </il>
+        </ul>
+    </div>
+
 
 <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter{{$list->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

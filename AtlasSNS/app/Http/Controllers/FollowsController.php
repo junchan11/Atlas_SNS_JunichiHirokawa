@@ -33,11 +33,12 @@ class FollowsController extends Controller
     }
 
     public function show($id){
-
+        //$idで選択したidを取ってきているので、idを取ってくる記述は不要
 
         $posts = Post::with('user')->where('user_id',$id)->latest()->get();
 
         $user=User::find($id);
+        //userテーブルから＄idで取ってきたidを単一で選択している
 
 
         return view('posts.show',compact('posts','user'));

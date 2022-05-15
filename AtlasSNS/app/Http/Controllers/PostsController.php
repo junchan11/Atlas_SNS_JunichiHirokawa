@@ -11,7 +11,7 @@ class PostsController extends Controller
     //
     public function index(){
 
-        $list = Post::get();
+        $list = Post::latest()->get();
         return view('posts.index',['list'=>$list]);
 
     }
@@ -60,25 +60,7 @@ class PostsController extends Controller
 
     }
 
-    public function show()//カリキュラム参照　簡易SNS開発②
-    {
-        $following_id = Auth::user()->follows()->pluck('followed_id');
 
-        $posts = Post::with('user')->whereIn('user_id',$following_id)->latest()->get();//whereIn('user_id',$following_id)は指定したカラムの中に値が含まれているか。（'カラム名',値）　get()そのまま抽出
-
-        return view('follows.followList',compact('posts'));
-    }
-
-
-    public function show_list()
-    {
-        $following_id = Auth::user()->followers()->pluck('following_id');
-
-        $posts = Post::with('user')->whereIn('user_id',$following_id)->latest()->get();
-
-
-        return view('follows.followerList', compact('posts'));
-    }
 
 
 

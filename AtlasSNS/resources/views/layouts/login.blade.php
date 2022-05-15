@@ -21,27 +21,36 @@
     <!--OGPタグ/twitterカード-->
 </head>
 <body>
+
     <header>
         <div class="header_inner">
             <div class="header_list">
                 <div class="header_item">
-                    <a href="/top"><img src="{{asset('images/atlas.png' )}}" class="header_item_img"></a>
+                    <a href="/top"><img src="images/atlas.png" class="header_item_img"></a>
                 </div>
-                <div class="header_nav_user">
-                    {{Auth::user()->username}}&nbsp;さん
-                </div>
-                <ul class="menu">
-                    <li>
-                        <span class="arrow">></span>
-                        <ul class="menuSub">
-                            <li><a href="/top" class="ac_item_link home">HOME</a></li>
-                            <li class="profile"><a href="/profile" class="ac_item_link profile">プロフィール編集</a></li>
-                            <li><a href="/logout" class="ac_item_link logout">ログアウト</a></li>
+                <div class="header_nav_list">
+                    <div class="header_nav_item">
+                        <div class="header_nav_user">
+                            {{Auth::user()->username}}&nbsp;さん
+                        </div>
+                    </div>
+                    <div class="header_nav_item">
+                        <ul class="ac">
+                            <div class="ac-label">
+                                <div class="icon-wrap"><span class="icon"></span></div>
+                            </div>
+                            <div class="ac-content">
+                                <div class="ac_content_item">
+                                    <li><a href="/top" class="ac_item_link home">HOME</a></li>
+                                    <li class="profile"><a href="/profile" class="ac_item_link profile">プロフィール編集</a></li>
+                                    <li><a href="/logout" class="ac_item_link logout">ログアウト</a></li>
+                                </div>
+                            </div>
                         </ul>
-                    </li>
-                </ul>
-                <div class="header_nav_item">
+                    </div>
+                    <div class="header_nav_item">
                         <img src="{{ asset('storage/' . Auth::user()->images) }}" >
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,17 +66,22 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{ Auth::user()->username }}さんの</p></br>
-                <div>
-                <p>フォロー数    {{ Auth::user()->getFollowCount(Auth::id()) }}名</p><!--User.PHP内のgetFollowCountメソッドを使っている。(Auth::id())はログインしている人のidをgetFollowCount内の$user_idに送っている。-->
-                </div>
-                <p align="right"><a href="/follow-list" class="button_follow">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数{{ Auth::user()->getFollowerCount(Auth::id()) }}名</p>
-                </div>
-                <P align="right"><a href="/follower-list" class="button_follower">フォロワーリスト</a></P>
-            </div></br>
-            <p align="center"><a href="/search" class="button_searchUser">ユーザー検索</a></p>
+                <div class="side-item">
+                    <div>
+                        <p>{{ Auth::user()->username }}さんの</p></br>
+                    </div>
+
+                    <div>
+                        <p>フォロー数&emsp;&emsp;&emsp;&emsp;{{ Auth::user()->getFollowCount(Auth::id()) }}名</p><!--User.PHP内のgetFollowCountメソッドを使っている。(Auth::id())はログインしている人のidをgetFollowCount内の$user_idに送っている。-->
+                    </div>
+                    <p align="right"><a href="/follow-list" class="button_follow">フォローリスト</a></p>
+                    <div>
+                        <p>フォロワー数&emsp;&emsp;&emsp;{{ Auth::user()->getFollowerCount(Auth::id()) }}名</p>
+                    </div>
+                        <P align="right"><a href="/follower-list" class="button_follower">フォロワーリスト</a></P></br>
+                    </div>
+                        <p align="center"><a href="/search" class="button_searchUser">ユーザー検索</a></p>
+            </div>
         </div>
     </div>
     <footer>
@@ -79,13 +93,10 @@
 
     <script>
         $(function() {
-            $("ul.menu li").on('click',
-            function() {
-                $(".menuSub:not(:animated)", this).slideToggle();
-                $('.arrow').toggleClass("open");
-            }
-
-            );
+            $('.ac-label').click(function() {
+            $(this).next('div').slideToggle();
+            $(this).find(".icon").toggleClass('open');
+            });
         });
     </script>
 
