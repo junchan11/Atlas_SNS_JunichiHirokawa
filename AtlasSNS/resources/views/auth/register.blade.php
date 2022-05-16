@@ -21,10 +21,11 @@
       </div>
       <div class="new-item">
         {{ Form::label('password') }}
-        {{ Form::password('password',null,['class' => 'input-pass']) }}
+        {{ Form::password('password',['class' => 'input-new']) }}
+      </div>
       <div class="new-item">
         {{ Form::label('password confirmation') }}
-        {{ Form::password('password_confirmation',null,['class' => 'input-pass']) }}
+        {{ Form::password('password_confirmation',['class' => 'input-new']) }}
       </div>
       <div class="new-item-btn">
         {{ Form::submit('REGISTER') }}
@@ -33,5 +34,7 @@
         {!! Form::close() !!}
     </div>
   </div>
+
+
 
 @endsection

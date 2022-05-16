@@ -548,3 +548,55 @@ figure {
     border: 2px solid #BBBBBB;
     border-radius: 5px;
 }
+
+/*profile*/
+
+
+
+.profile-info {
+    display: block;
+    padding: 10px 47px;
+
+    border: 1px solid #BBBBBB;
+    text-align: center;
+    background-color: #DDDDDD;
+}
+
+.profile-bio {
+    display: block;
+    padding: 10px 47px;
+
+    border: 1px solid #BBBBBB;
+    text-align: center;
+    background-color: #DDDDDD;
+    width: 281px;
+}
+
+.profile-form img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-top: 20px;
+
+}
+
+.profile-form {
+    display: flex;
+    margin-top: 70px;
+    margin-left: 160px;
+    height: 700px;
+}
+
+.pf-block {
+    display: flex;
+    margin-top: 35px;
+    justify-content: space-between;
+}
+
+.up-button {
+    margin-top: 20px;
+}
+
+.profile-menu {
+    width: 600px;
+}
