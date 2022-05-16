@@ -12,10 +12,14 @@ header {
     text-align: center;
     color: #ffffff;
     font-size: 30px;
-    padding-top: 100px;
 
 }
 
+
+.error {
+    color: #ff0000;
+    margin-left: 25px;
+}
 
 h1 {
 

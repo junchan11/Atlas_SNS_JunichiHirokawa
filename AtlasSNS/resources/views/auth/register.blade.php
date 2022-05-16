@@ -8,7 +8,7 @@
       <p class="nwe-title">新規ユーザー登録</p>
         @if ($errors->has('password'))
           <span class=“help-block”>
-            <strong>{{ $errors->first('password') }}</strong>
+            <strong class="error">{{ $errors->first('password') }}</strong>
           </span>
         @endif
       <div class="new-item">

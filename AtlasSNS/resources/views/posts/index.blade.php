@@ -3,13 +3,18 @@
 
 @section('content')
 
-    {!! Form::open(['url' => 'post/create']) !!}
+    {!! Form::open(['url' => 'post/create','class' => 'form']) !!}
         <div class="form-group">
-            <figure class="form-icon"><img src="{{ asset('storage/' . Auth::user()->images) }}" ></figure>
-            <div class="form-box">
+            <div class="set">
+                <figure class="form-icon"><img src="{{ asset('storage/' . Auth::user()->images) }}" ></figure>
                 {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
                 {!! Form::hidden('user-id', Auth::user()->id ) !!}
-                <button type="submit" class="newPost-btn"><img src="images/post.png"></button>
+            </div>
+            <div class="form-box">
+                <div class="d4c">
+                    <button type="submit" class="newPost-btn"><img src="images/post.png"></button>
+                </div>
+
             </div>
         </div>
     {!! Form::close() !!}
