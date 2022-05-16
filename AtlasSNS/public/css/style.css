@@ -529,6 +529,7 @@ figure {
     background-color: #ffffff;
     border: none;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .search-item {
