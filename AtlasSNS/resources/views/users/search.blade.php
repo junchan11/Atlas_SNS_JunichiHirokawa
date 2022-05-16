@@ -6,13 +6,13 @@
         <div class="search-form">
             <div class="search-item">
                 {!! Form::input('text', 'search', null, ['required', 'class' => 'search-text', 'placeholder' => 'ユーザー名']) !!}
-                <button type="submit" class="search-btn"><img src="images/search.png"></button>
+                <button type="submit" class="search-btn"><img src="{{ asset('images/search.png') }}" ></button>
+                @if (!empty($keyword))
+                                <p class="word">検索キーワード:{{$keyword}}</p>
+                @endif
             </div>
         </div>
     {!! Form::close() !!}
-    @if (!empty($keyword))
-        <p>検索キーワード:{{$keyword}}</p>
-    @endif
 
 
 
