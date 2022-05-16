@@ -265,6 +265,7 @@ figure {
 .form-box {
     height: 100px;
     display: flex;
+    justify-content: space-between;
 }
 
 .form-group {
@@ -276,19 +277,15 @@ figure {
 
 .newPost-btn {
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
-    height: 50px;
-    width: 50px;
     outline: none;
-    margin-top: 65px;
-    margin-left: 300px;
 
 }
 
 .newPost-btn img {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+
 }
 
 .form-control {

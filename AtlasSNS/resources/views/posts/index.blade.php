@@ -9,7 +9,7 @@
             <div class="form-box">
                 {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
                 {!! Form::hidden('user-id', Auth::user()->id ) !!}
-                <button type="button" class="newPost-btn"><img src="images/post.png"></button>
+                <button type="submit" class="newPost-btn"><img src="images/post.png"></button>
             </div>
         </div>
     {!! Form::close() !!}
